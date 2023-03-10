@@ -14,7 +14,7 @@ export default function Main() {
     >
       <div className="py-5 mb-5 md:mb-0 md:py-0">
         <p className="bg-teal-400 text-white font-semibold text-center w-fit py-1 px-6 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl ">
-          Hello I'm
+          Hello I&apos;m
         </p>
         <h1 className="text-6xl font-semibold mt-5">Sidrah Rashid</h1>
         <h2 className="text-2xl font-semibold mt-2">Front-End Develepor</h2>

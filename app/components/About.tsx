@@ -47,12 +47,12 @@ export default function About() {
       >
         <h2 className="text-3xl font-semibold">About Me</h2>
         <p className="pt-2 text-sm">
-          Hi there, I'm a front-end developer with academic background in
-          bioinformatics. I've been honing my skills in web development.
-          Currently, I'm focusing on creating the front-end of websites, and I'm
-          always eager to learn more and expand my abilities. Thank you for
-          visiting my website, and feel free to reach out if you have any
-          questions or opportunities to collaborate.
+          Hi there, I&apos;m a front-end developer with academic background in
+          bioinformatics. I&apos;ve been honing my skills in web development.
+          Currently, I&apos;m focusing on creating the front-end of websites,
+          and I&apos;m always eager to learn more and expand my abilities. Thank
+          you for visiting my website, and feel free to reach out if you have
+          any questions or opportunities to collaborate.
         </p>
         <div>
           <ul className="flex flex-wrap gap-x-5 mt-5">
