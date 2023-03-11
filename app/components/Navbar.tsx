@@ -85,7 +85,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="flex flex-row-reverse md:flex-row justify-between items-center p-2 md:p-5 bg-white sticky top-0 z-50 border-4 border-transparent border-b-gray-50"
+          className="flex flex-row-reverse md:flex-row justify-between items-center p-2 md:p-5 bg-white sticky -top-1 md:top-0 z-50 border-4 border-transparent border-b-gray-50"
         >
           <div className="text-2xl text-teal-400 font-extrabold">SR</div>
 
@@ -108,11 +108,11 @@ export default function Navbar() {
 
           <ul
             className={`flex flex-col md:flex-row absolute md:static text-lg font-bold gap-x-8
-          bg-white w-fit md:w-auto top-10 left-0 px-3 md:px-0 
+          bg-white w-fit md:w-auto top-10 -left-2 px-3 md:px-0 
           ${
             menuOpen
               ? `top-[-490] opacity-0 md:opacity-100`
-              : `top-20 opacity-100`
+              : `top-12 opacity-100`
           }`}
           >
             {data.map((item: { ref: string; name: string }) => (
