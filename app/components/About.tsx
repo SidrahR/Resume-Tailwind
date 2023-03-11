@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { MdDownload } from "react-icons/md";
 import { motion as m } from "framer-motion";
+import { transition_0, transition_0_5 } from "./transitions";
 
 export default function About() {
   const [data, setData] = useState([]);
@@ -19,6 +20,20 @@ export default function About() {
       }
     };
     getData();
+  }, []);
+
+  // for animation
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateViewportWidth = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    updateViewportWidth();
+    window.addEventListener("resize", updateViewportWidth);
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
   }, []);
 
   return (
@@ -41,7 +56,8 @@ export default function About() {
       <m.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        // transition={{ duration: 0.5, delay: 0.5 }}
+        transition={viewportWidth < 768 ? transition_0 : transition_0_5}
         viewport={{ once: false, amount: 0.3 }}
         className="w-full pt-10 md:pt-0 md:w-1/2"
       >

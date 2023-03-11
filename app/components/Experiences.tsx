@@ -1,8 +1,28 @@
-import React from "react";
+import { useLayoutEffect, useState } from "react";
 import ExperienceCard from "./ExperienceCard";
 import { motion as m } from "framer-motion";
+import {
+  transition_0,
+  transition_0_5,
+  transition_1,
+  transition_1_5,
+  transition_2,
+} from "./transitions";
 
 export default function Experiences() {
+  // for animation
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateViewportWidth = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    updateViewportWidth();
+    window.addEventListener("resize", updateViewportWidth);
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
+  }, []);
   return (
     <div className="pt-5 pb-10 md:py-28 bg-gray-100 px-5">
       <m.h2
@@ -18,7 +38,7 @@ export default function Experiences() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_0_5}
           viewport={{ once: false, amount: 0.3 }}
         >
           <ExperienceCard
@@ -30,7 +50,7 @@ export default function Experiences() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1}
           viewport={{ once: false, amount: 0.3 }}
         >
           <ExperienceCard
@@ -44,7 +64,7 @@ export default function Experiences() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1_5}
           viewport={{ once: false, amount: 0.3 }}
         >
           <ExperienceCard
@@ -58,7 +78,7 @@ export default function Experiences() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_2}
           viewport={{ once: false, amount: 0.3 }}
         >
           <ExperienceCard

@@ -3,8 +3,29 @@ import { MdOutlineGpsFixed } from "react-icons/md";
 import { BsHourglassSplit } from "react-icons/bs";
 import PricingCard from "./PricingCard";
 import { motion as m } from "framer-motion";
+import {
+  transition_0,
+  transition_0_5,
+  transition_1,
+  transition_1_5,
+} from "./transitions";
+import { useLayoutEffect, useState } from "react";
 
 export default function Pricing() {
+  // for animation
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateViewportWidth = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    updateViewportWidth();
+    window.addEventListener("resize", updateViewportWidth);
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
+  }, []);
+
   return (
     <div className="pt-5 pb-10 md:py-28 px-5 bg-gray-100">
       <m.h2
@@ -20,7 +41,7 @@ export default function Pricing() {
         <m.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_0_5}
           viewport={{ once: false, amount: 0.3 }}
         >
           <PricingCard
@@ -34,7 +55,7 @@ export default function Pricing() {
         <m.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1}
           viewport={{ once: false, amount: 0.3 }}
         >
           <PricingCard
@@ -48,7 +69,7 @@ export default function Pricing() {
         <m.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1_5}
           viewport={{ once: false, amount: 0.3 }}
         >
           <PricingCard

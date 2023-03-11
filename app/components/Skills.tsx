@@ -1,8 +1,29 @@
 import HProgressBar from "./HProgressBar";
 import CProgressBar from "./CProgressBar";
 import { motion as m } from "framer-motion";
+import { useLayoutEffect, useState } from "react";
+import {
+  transition_0,
+  transition_0_5,
+  transition_1,
+  transition_1_5,
+} from "./transitions";
 
 export default function Skills() {
+  // for animation
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateViewportWidth = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    updateViewportWidth();
+    window.addEventListener("resize", updateViewportWidth);
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
+  }, []);
+
   return (
     <section className="pt-5 pb-10 md:py-36 flex flex-col md:flex-row gap-x-16 px-5">
       <div className="w-full md:w-1/2 text-center">
@@ -18,7 +39,7 @@ export default function Skills() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_0_5}
           viewport={{ once: false, amount: 0.3 }}
         >
           <HProgressBar skill="Javascript" percent="70%" />
@@ -33,7 +54,7 @@ export default function Skills() {
         <m.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1}
           viewport={{ once: false, amount: 0.3 }}
           className="text-3xl font-semibold mb-10"
         >
@@ -42,7 +63,7 @@ export default function Skills() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1_5}
           viewport={{ once: false, amount: 0.3 }}
           className="flex justify-between"
         >

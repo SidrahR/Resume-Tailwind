@@ -1,8 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion as m } from "framer-motion";
+import {
+  transition_0,
+  transition_0_5,
+  transition_1,
+  transition_1_5,
+} from "./transitions";
+import { useLayoutEffect, useState } from "react";
 
 export default function Portfolio() {
+  // for animation
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateViewportWidth = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    updateViewportWidth();
+    window.addEventListener("resize", updateViewportWidth);
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
+  }, []);
   return (
     <div className="pt-5 pb-6 md:py-24 px-5">
       <m.h2
@@ -17,7 +37,7 @@ export default function Portfolio() {
       <m.h3
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={viewportWidth < 768 ? transition_0 : transition_0_5}
         viewport={{ once: false, amount: 0.3 }}
         className="mt-5 mb-10 text-sm text-center mx-auto w-full  md:w-2/3"
       >
@@ -30,7 +50,7 @@ export default function Portfolio() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1}
           viewport={{ once: false, amount: 0.3 }}
           className="flex flex-1 flex-col items-center mb-10 md:mb-0"
         >
@@ -49,7 +69,7 @@ export default function Portfolio() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1_5}
           viewport={{ once: false, amount: 0.3 }}
           className="flex flex-1 flex-col items-center"
         >

@@ -1,12 +1,32 @@
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { motion as m } from "framer-motion";
+import {
+  transition_0,
+  transition_0_5,
+  transition_1,
+  transition_1_5,
+} from "./transitions";
 
 export default function Contact() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  // for animation
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateViewportWidth = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    updateViewportWidth();
+    window.addEventListener("resize", updateViewportWidth);
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
+  }, []);
 
   return (
     <div className="py-5 md:py-24 px-5">
@@ -24,7 +44,7 @@ export default function Contact() {
         <m.form
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_0_5}
           viewport={{ once: false, amount: 0.3 }}
           className="mx-auto w-full lg:w-1/2"
         >
@@ -81,7 +101,7 @@ export default function Contact() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={viewportWidth < 768 ? transition_0 : transition_1}
           viewport={{ once: false, amount: 0.3 }}
           className="mt-8 lg:mt-0 w-full lg:w-1/2  h-96 md:h-[35rem] lg:h-[25rem] object-contain relative mb-5 shadow-xl"
         >
