@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import { motion as m } from "framer-motion";
 
 export default function Contact() {
   const [firstName, setFirstName] = useState("");
@@ -9,10 +10,24 @@ export default function Contact() {
 
   return (
     <div className="py-5 md:py-24 px-5">
-      <h2 className="text-3xl font-semibold text-center mb-10">Contact Me</h2>
+      <m.h2
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: false, amount: 0.3 }}
+        className="text-3xl font-semibold text-center mb-10"
+      >
+        Contact Me
+      </m.h2>
 
       <div className="flex flex-col lg:flex-row gap-x-8">
-        <form className="mx-auto w-full lg:w-1/2">
+        <m.form
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="mx-auto w-full lg:w-1/2"
+        >
           <div className="flex justify-between gap-x-4">
             <div className="mb-4">
               <label className="text-lg mb-2">First Name</label>
@@ -61,11 +76,17 @@ export default function Contact() {
               Submit
             </button>
           </div>
-        </form>
+        </m.form>
 
-        <div className="mt-8 lg:mt-0 w-full lg:w-1/2  h-96 md:h-[35rem] lg:h-[25rem] object-contain relative mb-5 shadow-xl">
+        <m.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="mt-8 lg:mt-0 w-full lg:w-1/2  h-96 md:h-[35rem] lg:h-[25rem] object-contain relative mb-5 shadow-xl"
+        >
           <Image src={"/map.jpeg"} alt="picture" fill />
-        </div>
+        </m.div>
       </div>
     </div>
   );

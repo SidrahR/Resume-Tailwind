@@ -8,7 +8,7 @@ export default function Experiences() {
       <m.h2
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         viewport={{ once: false, amount: 0.3 }}
         className="text-3xl font-semibold text-center"
       >
@@ -18,7 +18,7 @@ export default function Experiences() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           viewport={{ once: false, amount: 0.3 }}
         >
           <ExperienceCard
@@ -30,7 +30,7 @@ export default function Experiences() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
           viewport={{ once: false, amount: 0.3 }}
         >
           <ExperienceCard
@@ -44,7 +44,7 @@ export default function Experiences() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.5 }}
+          transition={{ duration: 0.5, delay: 1.5 }}
           viewport={{ once: false, amount: 0.3 }}
         >
           <ExperienceCard
@@ -58,7 +58,7 @@ export default function Experiences() {
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2 }}
+          transition={{ duration: 0.5, delay: 2 }}
           viewport={{ once: false, amount: 0.3 }}
         >
           <ExperienceCard

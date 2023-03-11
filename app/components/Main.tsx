@@ -8,7 +8,7 @@ export default function Main() {
     <m.section
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 1.2 }}
+      transition={{ duration: 0.5, delay: 1.2 }}
       viewport={{ once: true, amount: 0.3 }}
       className="flex flex-col-reverse md:flex-row pt-3 md:py-36 px-5 items-center md:justify-between"
     >
