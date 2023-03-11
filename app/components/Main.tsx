@@ -12,14 +12,16 @@ export default function Main() {
       viewport={{ once: true, amount: 0.3 }}
       className="flex flex-col-reverse md:flex-row pt-3 md:py-36 px-5 items-center md:justify-between"
     >
-      <div className="py-5 mb-5 md:mb-0 md:py-0">
+      <div className="py-5 mb-5 md:mb-0 md:py-0 flex flex-col items-center md:items-start">
         <p className="bg-teal-400 text-white font-semibold text-center w-fit py-1 px-6 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl ">
           Hello I&apos;m
         </p>
-        <h1 className="text-6xl font-semibold mt-5">Sidrah Rashid</h1>
+        <h1 className="text-5xl md:text-xl font-semibold mt-5">
+          Sidrah Rashid
+        </h1>
         <h2 className="text-2xl font-semibold mt-2">Front-End Develepor</h2>
 
-        <div className=" mt-7 space-y-2">
+        <div className=" mt-7 space-y-2 flex flex-col items-center md:items-start">
           <div className="flex items-center gap-x-2">
             <MdEmail size="18" /> abc@gmail.com
           </div>
@@ -31,7 +33,7 @@ export default function Main() {
           </div>
         </div>
 
-        <div className="flex mt-10 ml-5 gap-x-8 items-center">
+        <div className="flex mt-10 md:ml-5 gap-x-8 items-center">
           <BsFacebook size="18" className="text-sky-600 cursor-pointer" />
           <BsYoutube size="21" className="text-red-600  cursor-pointer" />
           <BsTwitter size="18" className="text-sky-500  cursor-pointer" />

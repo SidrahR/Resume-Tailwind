@@ -50,7 +50,7 @@ export default function Skills() {
         </m.div>
       </div>
 
-      <div className="w-full md:w-1/2 text-center px-14 mt-5 md:mt-0">
+      <div className="w-full md:w-1/2 text-center px-5 md:px-14 mt-5 md:mt-0">
         <m.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

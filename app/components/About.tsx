@@ -43,7 +43,7 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: false, amount: 0.3 }}
-        className="w-full md:w-96 h-[25rem] md:h-96 object-contain relative "
+        className="w-full md:w-96 h-96 object-contain relative "
       >
         <Image
           src={"/about.png"}
