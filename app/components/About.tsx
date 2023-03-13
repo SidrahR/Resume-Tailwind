@@ -2,8 +2,6 @@ import Image from "next/image";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { MdDownload } from "react-icons/md";
 import { motion as m } from "framer-motion";
-import { useMediaQuery } from "@material-ui/core";
-
 import { transition_0, transition_0_5 } from "./transitions";
 
 export default function About() {
