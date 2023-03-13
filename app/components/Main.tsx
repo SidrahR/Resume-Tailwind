@@ -19,7 +19,7 @@ export default function Main() {
         <h1 className="text-5xl md:text-xl font-semibold mt-5">
           Sidrah Rashid
         </h1>
-        <h2 className="text-2xl font-semibold mt-2">Front-End Develepor</h2>
+        <h2 className="text-2xl font-semibold mt-2">Front-End Developer</h2>
 
         <div className=" mt-7 space-y-2 flex flex-col items-center md:items-start">
           <div className="flex items-center gap-x-2">
