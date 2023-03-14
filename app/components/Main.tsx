@@ -1,14 +1,15 @@
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import { BsFacebook, BsYoutube, BsTwitter, BsInstagram } from "react-icons/bs";
 import Image from "next/image";
+import { variant_slideup } from "./motion";
 import { motion as m } from "framer-motion";
 
 export default function Main() {
   return (
     <m.section
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 1 }}
+      variants={variant_slideup(0.5)}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       className="flex flex-col-reverse md:flex-row pt-3 md:py-36 px-5 items-center md:justify-between"
     >
@@ -53,6 +54,7 @@ export default function Main() {
                 alt="picture"
                 fill
                 style={{ borderRadius: "9999px" }}
+                priority
               ></Image>
             </div>
           </div>

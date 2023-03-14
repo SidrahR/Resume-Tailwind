@@ -11,6 +11,7 @@ import Portfolio from "./Portfolio";
 import Pricing from "./Pricing";
 import Contact from "./Contact";
 import { motion as m } from "framer-motion";
+import { variant_slideup } from "./motion";
 
 export default function Navbar() {
   const main = useRef(null);
@@ -82,9 +83,9 @@ export default function Navbar() {
     <Wrapper>
       {isListRendered && (
         <m.nav
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          variants={variant_slideup(1)}
+          initial="hidden"
+          whileInView="visible"
           className="flex flex-row-reverse md:flex-row justify-between items-center p-2 md:p-5 bg-white sticky -top-1 md:top-0 z-50 border-4 border-transparent border-b-gray-50"
         >
           <div className="text-2xl text-teal-400 font-extrabold">SR</div>

@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { MdDownload } from "react-icons/md";
 import { motion as m } from "framer-motion";
-import { transition_0, transition_0_5 } from "./transitions";
+// import { useMediaQuery } from "./useMediaQuery";
+import { variant_slideup } from "./motion";
 
 export default function About() {
   const [data, setData] = useState([]);
@@ -22,45 +23,56 @@ export default function About() {
     getData();
   }, []);
 
-  // for animation
-  const [viewportWidth, setViewportWidth] = useState(0);
+  // for responsive animation
+  // const isSmall = useMediaQuery("(max-width: 480px)");
+  // console.log(isSmall);
 
-  // const shouldAnimate = useMediaQuery("(min-width: 768px)");
-
-  useLayoutEffect(() => {
-    const updateViewportWidth = () => {
-      setViewportWidth(window.innerWidth);
-    };
-    updateViewportWidth();
-    window.addEventListener("resize", updateViewportWidth);
-    return () => {
-      window.removeEventListener("resize", updateViewportWidth);
-    };
-  }, []);
+  // let variants: Variants = {};
+  // if (isSmall) {
+  //   variants = {
+  //     hidden: {},
+  //     visible: {},
+  //   };
+  // } else {
+  //   variants = {
+  //     hidden: {
+  //       opacity: 0,
+  //       y: 50,
+  //     },
+  //     visible: {
+  //       opacity: 1,
+  //       y: 0,
+  //       transition: { duration: 0.5 },
+  //     },
+  //   };
+  // }
+  // console.log("variants", variants);
 
   return (
     <section className="bg-gray-100 flex flex-col px-5 md:flex-row pt-5 pb-10 md:py-32 items-center justify-between">
       <m.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: false, amount: 0.3 }}
+        variants={variant_slideup(0)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        // transition={viewportWidth < 768 ? transition_0 : transition_1}
         className="w-full md:w-96 h-96 object-contain relative "
       >
         <Image
           src={"/about.png"}
           alt="picture"
+          sizes=""
           fill
           style={{ borderRadius: "9999px" }}
-        ></Image>
+        />
       </m.div>
 
       <m.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        // transition={{ duration: 0.5, delay: 0.5 }}
-        transition={viewportWidth < 768 ? transition_0 : transition_0_5}
-        viewport={{ once: false, amount: 0.3 }}
+        variants={variant_slideup(0)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        // transition={viewportWidth < 768 ? transition_0 : transition_1}
         className="w-full pt-10 md:pt-0 md:w-1/2"
       >
         <h2 className="text-3xl font-semibold">About Me</h2>

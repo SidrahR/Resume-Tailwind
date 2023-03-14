@@ -1,12 +1,7 @@
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion as m } from "framer-motion";
-import {
-  transition_0,
-  transition_0_5,
-  transition_1,
-  transition_1_5,
-} from "./transitions";
+import { variant_slideup } from "./motion";
 
 export default function Contact() {
   const [firstName, setFirstName] = useState("");
@@ -14,27 +9,13 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  // for animation
-  const [viewportWidth, setViewportWidth] = useState(0);
-
-  useLayoutEffect(() => {
-    const updateViewportWidth = () => {
-      setViewportWidth(window.innerWidth);
-    };
-    updateViewportWidth();
-    window.addEventListener("resize", updateViewportWidth);
-    return () => {
-      window.removeEventListener("resize", updateViewportWidth);
-    };
-  }, []);
-
   return (
     <div className="py-5 md:py-24 px-5">
       <m.h2
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: false, amount: 0.3 }}
+        variants={variant_slideup(0)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
         className="text-3xl font-semibold text-center mb-10"
       >
         Contact Me
@@ -42,10 +23,10 @@ export default function Contact() {
 
       <div className="flex flex-col lg:flex-row gap-x-8">
         <m.form
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={viewportWidth < 768 ? transition_0 : transition_0_5}
-          viewport={{ once: false, amount: 0.3 }}
+          variants={variant_slideup(0.5)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="mx-auto w-full lg:w-1/2"
         >
           <div className="flex justify-between gap-x-4">
@@ -99,10 +80,10 @@ export default function Contact() {
         </m.form>
 
         <m.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={viewportWidth < 768 ? transition_0 : transition_1}
-          viewport={{ once: false, amount: 0.3 }}
+          variants={variant_slideup(0.5)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="mt-8 lg:mt-0 w-full lg:w-1/2  h-96 md:h-[35rem] lg:h-[25rem] object-contain relative mb-5 shadow-xl"
         >
           <Image src={"/map.jpeg"} alt="picture" fill />

@@ -4,46 +4,32 @@ import { BsHourglassSplit } from "react-icons/bs";
 import PricingCard from "./PricingCard";
 import { motion as m } from "framer-motion";
 import {
-  transition_0,
-  transition_0_5,
-  transition_1,
-  transition_1_5,
-} from "./transitions";
-import { useLayoutEffect, useState } from "react";
+  variant_slideup,
+  variant_slide_right,
+  variant_stagger,
+} from "./motion";
 
 export default function Pricing() {
-  // for animation
-  const [viewportWidth, setViewportWidth] = useState(0);
-
-  useLayoutEffect(() => {
-    const updateViewportWidth = () => {
-      setViewportWidth(window.innerWidth);
-    };
-    updateViewportWidth();
-    window.addEventListener("resize", updateViewportWidth);
-    return () => {
-      window.removeEventListener("resize", updateViewportWidth);
-    };
-  }, []);
-
   return (
     <div className="pt-5 pb-10 md:py-28 px-5 bg-gray-100">
       <m.h2
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: false, amount: 0.3 }}
+        variants={variant_slideup(0)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
         className="text-3xl font-semibold text-center"
       >
         Pricing Table
       </m.h2>
-      <div className="flex flex-col lg:flex-row justify-between mt-5 md:mt-10">
-        <m.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={viewportWidth < 768 ? transition_0 : transition_0_5}
-          viewport={{ once: false, amount: 0.3 }}
-        >
+
+      <m.div
+        variants={variant_slide_right}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="flex flex-col lg:flex-row justify-around mt-5 md:mt-10"
+      >
+        <m.div variants={variant_stagger}>
           <PricingCard
             title="Full-Time Work"
             description="I am available for full time"
@@ -52,12 +38,7 @@ export default function Pricing() {
           />
         </m.div>
 
-        <m.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={viewportWidth < 768 ? transition_0 : transition_1}
-          viewport={{ once: false, amount: 0.3 }}
-        >
+        <m.div variants={variant_stagger}>
           <PricingCard
             title="Fixed Price Project"
             description="I am available for fixed roles"
@@ -66,12 +47,7 @@ export default function Pricing() {
           />
         </m.div>
 
-        <m.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={viewportWidth < 768 ? transition_0 : transition_1_5}
-          viewport={{ once: false, amount: 0.3 }}
-        >
+        <m.div variants={variant_stagger}>
           <PricingCard
             title="Hourley Work"
             description="I am available for Hourley projets"
@@ -79,7 +55,7 @@ export default function Pricing() {
             icon={BsHourglassSplit}
           />
         </m.div>
-      </div>
+      </m.div>
     </div>
   );
 }

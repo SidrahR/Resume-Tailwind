@@ -1,5 +1,3 @@
-import React from "react";
-
 type Work = { designation: string; year: string; work: string };
 
 export default function ExperienceCard({ designation, year, work }: Work) {
