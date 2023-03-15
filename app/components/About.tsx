@@ -56,15 +56,9 @@ export default function About() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         // transition={viewportWidth < 768 ? transition_0 : transition_1}
-        className="w-full md:w-96 h-96 object-contain relative "
+        className="w-full md:w-96 h-[22rem] md:h-96 object-cover relative "
       >
-        <Image
-          src={"/about.png"}
-          alt="picture"
-          sizes=""
-          fill
-          style={{ borderRadius: "9999px" }}
-        />
+        <Image src={"/about.png"} alt="picture" sizes="" fill />
       </m.div>
 
       <m.div

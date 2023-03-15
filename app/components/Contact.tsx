@@ -84,7 +84,7 @@ export default function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-8 lg:mt-0 w-full lg:w-1/2  h-96 md:h-[35rem] lg:h-[25rem] object-contain relative mb-5 shadow-xl"
+          className="mt-8 lg:mt-0 w-full lg:w-1/2 h-80 md:h-[35rem] lg:h-[25rem] object-cover relative mb-5 shadow-xl"
         >
           <Image src={"/map.jpeg"} alt="picture" fill />
         </m.div>

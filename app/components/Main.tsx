@@ -48,7 +48,7 @@ export default function Main() {
       <div className="flex items-center justify-center">
         <div className="border-[16px] border-neutral-100 rounded-full">
           <div className="border-[16px] border-neutral-200 rounded-full ">
-            <div className="w-64 h-64 md:w-72 md:h-72 object-contain relative rounded-full">
+            <div className="w-64 h-64 md:w-72 md:h-72 object-cover relative rounded-full">
               <Image
                 src={"/sidrah.jpg"}
                 alt="picture"

@@ -28,7 +28,7 @@ export default function Portfolio() {
           viewport={{ once: true, amount: 0.3 }}
           className="flex flex-1 flex-col items-center mb-10 md:mb-0"
         >
-          <div className="w-full h-72 object-contain relative mb-5 shadow-xl">
+          <div className="w-full h-56 md:h-60 lg:h-72  object-cover relative mb-5 shadow-xl">
             <Image src={"/panaverse.png"} alt="picture" fill />
           </div>
           <Link
@@ -47,7 +47,7 @@ export default function Portfolio() {
           viewport={{ once: true, amount: 0.3 }}
           className="flex flex-1 flex-col items-center"
         >
-          <div className="w-full h-72 object-contain relative mb-5 shadow-xl">
+          <div className="w-full h-56 md:h-60 lg:h-72 object-cover relative mb-5 shadow-xl">
             <Image src={"/piaic.png"} alt="picture" fill />
           </div>
           <Link
